@@ -14,7 +14,7 @@ body {
 
 .kosongan{
     list-style: none;
-    height: 8vh; /* Mengurangi tinggi untuk mobile */
+    height: 5vh; /* Mengurangi tinggi untuk mobile */
 }
 
 .card {
