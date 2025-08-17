@@ -2,104 +2,53 @@
 html {
     padding: 0;
     margin: 0;
+    box-sizing: border-box; /* Menambahkan box-sizing */
+}
+
+body {
+    font-family: "League Spartan", sans-serif;
+    background-color: #f5f5f5;
+    padding: 0;
+    margin: 0;
 }
 
 .kosongan{
     list-style: none;
-    height: 13vh;
-
+    height: 8vh; /* Mengurangi tinggi untuk mobile */
 }
 
-.card{
-    background-color: #f8db8a ;
+.card {
+    background-color: #f8db8a;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 800px;
-    width: 100vh;
-    box-shadow: 7px 9px 5px 0px rgba(0,0,0,0.36);
-    -webkit-box-shadow: 7px 9px 5px 0px rgba(0,0,0,0.36);
-    -moz-box-shadow: 7px 9px 5px 0px rgba(0,0,0,0.36);
-}
-
-.card-last{
-    background-color: #f8db8a ;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 350px;
-    width: 100vh;
+    width: 90%; /* Menggunakan persentase untuk lebar */
+    max-width: 800px; /* Batas maksimal lebar */
+    margin: 0 auto; /* Centering */
     padding: 20px;
     box-shadow: 7px 9px 5px 0px rgba(0,0,0,0.36);
     -webkit-box-shadow: 7px 9px 5px 0px rgba(0,0,0,0.36);
     -moz-box-shadow: 7px 9px 5px 0px rgba(0,0,0,0.36);
+    border-radius: 15px;
+    flex-direction: column; /* Default untuk mobile */
+    min-height: 500px;
 }
 
-
-.header0{
-    font-size: 38px;
-    list-style: none; 
-    padding-bottom: 8px;
-    padding-top: 20px;
-    padding-right: 20px;
-    font-family: "League Spartan", sans-serif;
-    font-optical-sizing: auto;
-    font-weight: bold;
-    font-style: normal;
-    display: flex;
-    justify-content: center;
-    align-items: center;    
-}
-
-.header{
-    font-size: 38px;
-    list-style: none; 
-    padding-bottom: 8px;
-    padding-top: 20px;
-    padding-right: 20px;
-    font-family: "League Spartan", sans-serif;
-    font-optical-sizing: auto;
-    font-weight: bold;
-    font-style: normal;
-
-}
-
-.header1{
-    font-size: 38px;
-    list-style: none; 
-    padding-bottom: 8px;
-    padding-left: 24px;
-    font-family: "League Spartan", sans-serif;
-    font-optical-sizing: auto;
-    font-weight: bold;
-    font-style: normal;
-
-}
-
-.isi0{
-    font-size: 18px;
-    list-style: none;
-    text-align: center;
+.card-last{
+    background-color: #f8db8a;
     display: flex;
     justify-content: center;
     align-items: center;
-}
-
-.isi{
-    font-size: 18px;
-    list-style: none;
-}
-
-.isi1{
-    font-size: 18px;
-    list-style: none;
-    padding-right: 24px;
-}
-
-.isi2{
-    font-size: 18px;
-    list-style: none;
-    padding-left: 24px;
+    width: 90%;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    box-shadow: 7px 9px 5px 0px rgba(0,0,0,0.36);
+    -webkit-box-shadow: 7px 9px 5px 0px rgba(0,0,0,0.36);
+    -moz-box-shadow: 7px 9px 5px 0px rgba(0,0,0,0.36);
+    border-radius: 15px;
+    flex-direction: column;
+    min-height: 350px;
 }
 
 .content{
@@ -107,40 +56,211 @@ html {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    width: 100%;
+    text-align: center; /* Menambahkan text centering */
 }
 
-.pertama{
-    width: 194px;
-    height: 259px;
+.header0{
+    font-size: clamp(24px, 5vw, 38px); /* Responsive font size */
+    list-style: none; 
+    padding: 20px 10px 15px 10px;
+    font-family: "League Spartan", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: bold;
+    font-style: normal;
     display: flex;
     justify-content: center;
     align-items: center;
-    border-radius: 32px;
+    text-align: center;
 }
 
-.kedua{
-    width: 194px;
-    height: 259px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 32px;
+.header{
+    font-size: clamp(24px, 5vw, 38px);
+    list-style: none; 
+    padding: 15px 10px;
+    font-family: "League Spartan", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: bold;
+    font-style: normal;
+    text-align: center;
 }
 
-.ketiga{
-    width: 194px;
-    height: 259px;
+.header1{
+    font-size: clamp(24px, 5vw, 38px);
+    list-style: none; 
+    padding: 15px 10px;
+    font-family: "League Spartan", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: bold;
+    font-style: normal;
+    text-align: center;
+}
+
+.isi0{
+    font-size: clamp(14px, 3vw, 18px);
+    list-style: none;
+    text-align: center;
+    padding: 10px 15px;
+    line-height: 1.5;
+}
+
+.isi{
+    font-size: clamp(14px, 3vw, 18px);
+    list-style: none;
+    line-height: 1.5;
+    padding: 10px;
+}
+
+.isi1{
+    font-size: clamp(14px, 3vw, 18px);
+    list-style: none;
+    padding: 10px 15px;
+    line-height: 1.5;
+    text-align: left;
     display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 32px;
+    flex-direction: column;
+    align-items: center; /* Menambahkan centering untuk CTA */
+}
+
+.isi2{
+    font-size: clamp(14px, 3vw, 18px);
+    list-style: none;
+    padding: 10px 15px;
+    line-height: 1.5;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Menambahkan centering untuk CTA */
+}
+
+/* Responsive images */
+.pertama, .kedua, .ketiga{
+    width: 100%;
+    max-width: 250px;
+    height: auto;
+    aspect-ratio: 3/4; /* Mempertahankan proporsi */
+    object-fit: cover;
+    border-radius: 15px;
+    margin: 15px 0;
+    align-self: center; /* Memastikan gambar berada di tengah */
 }
 
 .keempat{
-    width: 88px;
-    height: 155px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 4px;
+    width: 100%;
+    max-width: 120px;
+    height: auto;
+    aspect-ratio: 9/16;
+    object-fit: cover;
+    border-radius: 8px;
+    margin: 15px 0;
+    align-self: center; /* Memastikan gambar berada di tengah */
+}
+
+/* Link styling */
+.link, a {
+    color: #333;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 10px 20px;
+    background-color: rgba(255,255,255,0.7);
+    border-radius: 20px;
+    transition: all 0.3s ease;
+    display: inline-block;
+    margin: 15px auto; /* Mengubah margin untuk centering */
+    text-align: center;
+    align-self: center; /* Memastikan CTA berada di tengah */
+}
+
+.link:hover, a:hover {
+    background-color: rgba(255,255,255,0.9);
+    transform: translateY(-2px);
+}
+
+/* Media Queries untuk berbagai ukuran layar */
+
+/* Tablet dan layar kecil (768px ke atas) */
+@media screen and (min-width: 768px) {
+    .kosongan {
+        height: 10vh;
+    }
+    
+    .card {
+        width: 85%;
+        padding: 30px;
+        flex-direction: row;
+        align-items: center; /* Mengubah dari flex-start ke center */
+        gap: 30px;
+    }
+    
+    .card-last {
+        flex-direction: row;
+        gap: 30px;
+        padding: 30px;
+        align-items: center; /* Memastikan alignment di tengah */
+    }
+    
+    .content {
+        flex-direction: row;
+        gap: 30px;
+        align-items: center; /* Mengubah dari flex-start ke center */
+    }
+    
+    .pertama, .kedua, .ketiga {
+        max-width: 220px;
+        margin: 0;
+    }
+    
+    .keempat {
+        max-width: 100px;
+        margin: 0;
+    }
+    
+    .isi1, .isi2 {
+        flex: 1;
+        padding: 0 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center; /* Menambahkan vertical centering untuk teks */
+        align-items: center; /* Memastikan CTA tetap di tengah di desktop */
+    }
+    
+    /* Untuk page2.html - gambar di kanan */
+    .card:has(.kedua) {
+        flex-direction: row-reverse;
+    }
+}
+
+/* Desktop (1024px ke atas) */
+@media screen and (min-width: 1024px) {
+    .kosongan {
+        height: 13vh;
+    }
+    
+    .card {
+        width: 80%;
+        max-width: 900px;
+        padding: 40px;
+    }
+    
+    .card-last {
+        width: 80%;
+        max-width: 900px;
+        padding: 40px;
+    }
+    
+    .pertama, .kedua, .ketiga {
+        max-width: 250px;
+    }
+    
+    .keempat {
+        max-width: 120px;
+    }
+}
+
+/* Large desktop (1440px ke atas) */
+@media screen and (min-width: 1440px) {
+    .card, .card-last {
+        max-width: 1000px;
+        padding: 50px;
+    }
 }
