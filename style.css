@@ -1,0 +1,146 @@
+*,
+html {
+    padding: 0;
+    margin: 0;
+}
+
+.kosongan{
+    list-style: none;
+    height: 13vh;
+
+}
+
+.card{
+    background-color: #f8db8a ;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 800px;
+    width: 100vh;
+    box-shadow: 7px 9px 5px 0px rgba(0,0,0,0.36);
+    -webkit-box-shadow: 7px 9px 5px 0px rgba(0,0,0,0.36);
+    -moz-box-shadow: 7px 9px 5px 0px rgba(0,0,0,0.36);
+}
+
+.card-last{
+    background-color: #f8db8a ;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 350px;
+    width: 100vh;
+    padding: 20px;
+    box-shadow: 7px 9px 5px 0px rgba(0,0,0,0.36);
+    -webkit-box-shadow: 7px 9px 5px 0px rgba(0,0,0,0.36);
+    -moz-box-shadow: 7px 9px 5px 0px rgba(0,0,0,0.36);
+}
+
+
+.header0{
+    font-size: 38px;
+    list-style: none; 
+    padding-bottom: 8px;
+    padding-top: 20px;
+    padding-right: 20px;
+    font-family: "League Spartan", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: bold;
+    font-style: normal;
+    display: flex;
+    justify-content: center;
+    align-items: center;    
+}
+
+.header{
+    font-size: 38px;
+    list-style: none; 
+    padding-bottom: 8px;
+    padding-top: 20px;
+    padding-right: 20px;
+    font-family: "League Spartan", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: bold;
+    font-style: normal;
+
+}
+
+.header1{
+    font-size: 38px;
+    list-style: none; 
+    padding-bottom: 8px;
+    padding-left: 24px;
+    font-family: "League Spartan", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: bold;
+    font-style: normal;
+
+}
+
+.isi0{
+    font-size: 18px;
+    list-style: none;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.isi{
+    font-size: 18px;
+    list-style: none;
+}
+
+.isi1{
+    font-size: 18px;
+    list-style: none;
+    padding-right: 24px;
+}
+
+.isi2{
+    font-size: 18px;
+    list-style: none;
+    padding-left: 24px;
+}
+
+.content{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.pertama{
+    width: 194px;
+    height: 259px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 32px;
+}
+
+.kedua{
+    width: 194px;
+    height: 259px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 32px;
+}
+
+.ketiga{
+    width: 194px;
+    height: 259px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 32px;
+}
+
+.keempat{
+    width: 88px;
+    height: 155px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 4px;
+}
