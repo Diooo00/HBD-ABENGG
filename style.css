@@ -293,7 +293,7 @@ body {
 /* Bottom right flower - closer to card */
 .card::after {
     bottom: -15px;
-    right: -15px;
+    right: -35px;
     background: radial-gradient(circle, #a8e6cf 20%, #ffd3a5 40%, #fd9853 70%);
     box-shadow: 
         12px 12px 0 -8px #b8f0d6,
@@ -314,7 +314,7 @@ body {
 
 .flower-top-right {
     top: -10px;
-    right: 5px;
+    right: 40px;
     background: radial-gradient(circle, #ff9a9e 30%, #fecfef 70%);
     box-shadow: 
         8px 8px 0 -6px #ffadb0,
