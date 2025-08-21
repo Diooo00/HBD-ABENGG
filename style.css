@@ -264,3 +264,80 @@ body {
         padding: 50px;
     }
 }
+
+/* Flower decorations */
+.card::before,
+.card::after {
+    content: '';
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    z-index: 10;
+}
+
+/* Top left flower - closer to card */
+.card::before {
+    top: -15px;
+    left: -15px;
+    background: radial-gradient(circle, #ff6b9d 20%, #ffd93d 40%, #6bcf7f 70%);
+    box-shadow: 
+        12px 12px 0 -8px #ff8fab,
+        -12px 12px 0 -8px #ff8fab,
+        12px -12px 0 -8px #ff8fab,
+        -12px -12px 0 -8px #ff8fab,
+        0 0 15px rgba(255, 107, 157, 0.3);
+    animation: float1 4s ease-in-out infinite;
+}
+
+/* Bottom right flower - closer to card */
+.card::after {
+    bottom: -15px;
+    right: -15px;
+    background: radial-gradient(circle, #a8e6cf 20%, #ffd3a5 40%, #fd9853 70%);
+    box-shadow: 
+        12px 12px 0 -8px #b8f0d6,
+        -12px 12px 0 -8px #b8f0d6,
+        12px -12px 0 -8px #b8f0d6,
+        -12px -12px 0 -8px #b8f0d6,
+        0 0 15px rgba(168, 230, 207, 0.3);
+    animation: float2 5s ease-in-out infinite;
+}
+/* Small flowers */
+.flower-small {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    z-index: 5;
+}
+
+.flower-top-right {
+    top: -10px;
+    right: 40px;
+    background: radial-gradient(circle, #ff9a9e 30%, #fecfef 70%);
+    box-shadow: 
+        8px 8px 0 -6px #ffadb0,
+        -8px 8px 0 -6px #ffadb0,
+        8px -8px 0 -6px #ffadb0,
+        -8px -8px 0 -6px #ffadb0;
+    animation: float3 2.5s ease-in-out infinite;
+}
+
+.flower-bottom-left {
+    bottom: -10px;
+    left: 40px;
+    background: radial-gradient(circle, #a8edea 30%, #fed6e3 70%);
+    box-shadow: 
+        8px 8px 0 -6px #b8f5f0,
+        -8px 8px 0 -6px #b8f5f0,
+        8px -8px 0 -6px #b8f5f0,
+        -8px -8px 0 -6px #b8f5f0;
+    animation: float4 3.5s ease-in-out infinite;
+}
+
+/* Animations */
+@keyframes float1 { 0%, 100% { transform: translateY(0px) rotate(0deg); } 50% { transform: translateY(-10px) rotate(5deg); } }
+@keyframes float2 { 0%, 100% { transform: translateY(0px) rotate(0deg); } 50% { transform: translateY(-8px) rotate(-3deg); } }
+@keyframes float3 { 0%, 100% { transform: translateY(0px) rotate(0deg); } 50% { transform: translateY(-6px) rotate(8deg); } }
+@keyframes float4 { 0%, 100% { transform: translateY(0px) rotate(0deg); } 50% { transform: translateY(-12px) rotate(-6deg); } }

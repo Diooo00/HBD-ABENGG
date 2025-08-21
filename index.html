@@ -3,49 +3,223 @@
 <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Happy Birthday Abel 😏</title>
+    <title>Happy Birthday Abel 😊</title>
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@100..900&display=swap" rel="stylesheet">
+    <style>
+        /* Audio control button styling */
+        .audio-control {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: rgba(248, 219, 138, 0.9);
+            border: none;
+            border-radius: 50px;
+            padding: 10px 15px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: bold;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+        
+        .audio-control:hover {
+            background: rgba(248, 219, 138, 1);
+            transform: translateY(-2px);
+        }
+        
+        .audio-indicator {
+            position: fixed;
+            top: 70px;
+            right: 20px;
+            background: rgba(0,0,0,0.7);
+            color: white;
+            padding: 8px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            z-index: 1000;
+            display: none;
+        }
+        
+        /* Click overlay untuk memicu audio */
+        .click-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.1);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+            cursor: pointer;
+        }
+        
+        .click-overlay .message {
+            background: white;
+            padding: 20px 30px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+            font-family: "League Spartan", sans-serif;
+            font-weight: bold;
+        }
+        
+        .hidden {
+            display: none !important;
+        }
+    </style>
 </head>
 <body>
-<audio preload="auto" autoplay loop>\
-    <source src="gibli.mp3" type="audio/mpeg">
-</audio>
-   
-    <div>
-        <li class="kosongan">
+    <!-- Audio elements -->
+    <audio id="backgroundAudio" preload="auto" loop>
+        <source src="lagu hbd.mp3" type="audio/mpeg">
+    </audio>
+    
+    <!-- Click overlay untuk memicu audio -->
+    <div class="click-overlay" id="clickOverlay">
+        <div class="message">
+            <h3>🎵 Click anywhere to start the music! 🎵</h3>
+            <p>Klik di mana saja untuk memulai musik latar</p>
+        </div>
+    </div>
+    
+    <!-- Audio control button -->
+    <button class="audio-control" id="audioToggle">🔇 Play Music</button>
+    <div class="audio-indicator" id="audioIndicator">Music: Off</div>
 
-        </li>    
+    <div>
+        <li class="kosongan"></li>    
     </div>
     
     <div class="card">
+        <div class="flower-small flower-top-right"></div>
+        <div class="flower-small flower-bottom-left"></div>
         <div class="content">
             <img src="foto1.jpg" class="pertama"/>
             <ul>
                 <li class="header0">Happy Birthday Abelll!</li>
                 <li class="isi0">
-                    Happy 20th Birth Day Abelll, wish u every single luck on this world.<br>
-                    Btw, may i call u just abel from now on cz calling u kak or mbak is getting weird for me.<br> 
-                    Well actually by this birthday letter, i wanna tell u something that i haven't had time yet to tell you. <br>           
-                    Actually that morning i'm already prepparing a letter for u, but clumsy me just not brought it that morning hehehe.<br>
+                    Happy 20th Birthday Abelll, wish u every single luck on this world.
+                    Btw, may i call u just abel from now on cz calling u kak or mbak is getting weird for me.
+                    Well actually by this birthday letter, i wanna tell u something that i haven't had time yet to tell you.            
+                    Actually that morning i'm already prepparing a letter for u, but clumsy me just not brought it that morning hehehe.
                     Maybe i'll just tell u the contents of it by this letter.<br><br>
                     (don't judge me please if this letter looks kinda weird, i just learned how to make it a week ago hehe)
                 </li>
                 <a href="page2.html" class="link"><br>Wanna read next?</a>
             </ul>
         </div>
-            
     </div>
     
     <div>
-        <li class="kosongan">
-
-        </li>    
+        <li class="kosongan"></li>    
     </div>
-    
-    
 
+    <script>
+        // Audio management
+        const audio = document.getElementById('backgroundAudio');
+        const audioToggle = document.getElementById('audioToggle');
+        const audioIndicator = document.getElementById('audioIndicator');
+        const clickOverlay = document.getElementById('clickOverlay');
+        
+        let isPlaying = false;
+        let hasInteracted = false;
+        
+        // Function to play audio
+        function playAudio() {
+            audio.play().then(() => {
+                isPlaying = true;
+                audioToggle.innerHTML = '🔊 Pause Music';
+                audioIndicator.innerHTML = 'Music: Playing';
+                audioIndicator.style.display = 'block';
+                setTimeout(() => {
+                    audioIndicator.style.display = 'none';
+                }, 2000);
+            }).catch(error => {
+                console.log('Audio play failed:', error);
+                audioToggle.innerHTML = '🔇 Play Music';
+            });
+        }
+        
+        // Function to pause audio
+        function pauseAudio() {
+            audio.pause();
+            isPlaying = false;
+            audioToggle.innerHTML = '🔇 Play Music';
+            audioIndicator.innerHTML = 'Music: Paused';
+            audioIndicator.style.display = 'block';
+            setTimeout(() => {
+                audioIndicator.style.display = 'none';
+            }, 2000);
+        }
+        
+        // Handle first user interaction
+        function handleFirstInteraction() {
+            if (!hasInteracted) {
+                hasInteracted = true;
+                clickOverlay.classList.add('hidden');
+                playAudio();
+            }
+        }
+        
+        // Event listeners
+        clickOverlay.addEventListener('click', handleFirstInteraction);
+        
+        // Also handle other interactions
+        document.addEventListener('click', function(e) {
+            if (e.target !== audioToggle && !hasInteracted) {
+                handleFirstInteraction();
+            }
+        });
+        
+        document.addEventListener('keydown', function(e) {
+            if (!hasInteracted) {
+                handleFirstInteraction();
+            }
+        });
+        
+        // Audio toggle button
+        audioToggle.addEventListener('click', function() {
+            if (!hasInteracted) {
+                handleFirstInteraction();
+                return;
+            }
+            
+            if (isPlaying) {
+                pauseAudio();
+            } else {
+                playAudio();
+            }
+        });
+        
+        // Handle audio events
+        audio.addEventListener('play', function() {
+            isPlaying = true;
+            audioToggle.innerHTML = '🔊 Pause Music';
+        });
+        
+        audio.addEventListener('pause', function() {
+            isPlaying = false;
+            audioToggle.innerHTML = '🔇 Play Music';
+        });
+        
+        audio.addEventListener('ended', function() {
+            isPlaying = false;
+            audioToggle.innerHTML = '🔇 Play Music';
+        });
+        
+        // Handle page visibility change (when user switches tabs)
+        document.addEventListener('visibilitychange', function() {
+            if (document.hidden && isPlaying) {
+                // Optionally pause when tab is hidden
+                // pauseAudio();
+            }
+        });
+    </script>
 </body>
 </html>
