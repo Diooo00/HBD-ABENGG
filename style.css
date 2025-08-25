@@ -2,7 +2,7 @@
 html {
     padding: 0;
     margin: 0;
-    box-sizing: border-box; /* Menambahkan box-sizing */
+    box-sizing: border-box;
 }
 
 body {
@@ -10,11 +10,89 @@ body {
     background-color: #f5f5f5;
     padding: 0;
     margin: 0;
+    width: 100%;
+    overflow-x: hidden; /* Mencegah horizontal scroll */
+}
+
+/* Audio Control - Compact Icon Only */
+.audio-control {
+    position: fixed;
+    top: 15px;
+    right: 15px;
+    background: rgba(248, 219, 138, 0.95);
+    border: none;
+    border-radius: 50%;
+    width: 45px;
+    height: 45px;
+    cursor: pointer;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+    transition: all 0.3s ease;
+    z-index: 1000;
+}
+
+.audio-control:hover {
+    background: rgba(248, 219, 138, 1);
+    transform: translateY(-2px) scale(1.05);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+.audio-control:active {
+    transform: translateY(0) scale(0.95);
+}
+
+.audio-indicator {
+    position: fixed;
+    top: 70px;
+    right: 15px;
+    background: rgba(0,0,0,0.8);
+    color: white;
+    padding: 6px 12px;
+    border-radius: 15px;
+    font-size: 11px;
+    z-index: 1000;
+    display: none;
+    max-width: 120px;
+    text-align: center;
+}
+
+/* Click overlay styling */
+.click-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0,0,0,0.1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+    cursor: pointer;
+}
+
+.click-overlay .message {
+    background: white;
+    padding: 20px 30px;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+    font-family: "League Spartan", sans-serif;
+    font-weight: bold;
+    max-width: 90vw;
+    margin: 0 5vw;
+}
+
+.hidden {
+    display: none !important;
 }
 
 .kosongan{
     list-style: none;
-    height: 5vh; /* Mengurangi tinggi untuk mobile */
+    height: 3vh;
 }
 
 .card {
@@ -22,16 +100,18 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 90%; /* Menggunakan persentase untuk lebar */
-    max-width: 800px; /* Batas maksimal lebar */
-    margin: 0 auto; /* Centering */
-    padding: 20px;
+    width: 90%;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 15px;
     box-shadow: 7px 9px 5px 0px rgba(0,0,0,0.36);
     -webkit-box-shadow: 7px 9px 5px 0px rgba(0,0,0,0.36);
     -moz-box-shadow: 7px 9px 5px 0px rgba(0,0,0,0.36);
     border-radius: 15px;
-    flex-direction: column; /* Default untuk mobile */
+    flex-direction: column;
     min-height: 500px;
+    position: relative;
+    box-sizing: border-box;
 }
 
 .card-last{
@@ -42,13 +122,15 @@ body {
     width: 90%;
     max-width: 800px;
     margin: 0 auto;
-    padding: 20px;
+    padding: 15px;
     box-shadow: 7px 9px 5px 0px rgba(0,0,0,0.36);
     -webkit-box-shadow: 7px 9px 5px 0px rgba(0,0,0,0.36);
     -moz-box-shadow: 7px 9px 5px 0px rgba(0,0,0,0.36);
     border-radius: 15px;
     flex-direction: column;
     min-height: 350px;
+    position: relative;
+    box-sizing: border-box;
 }
 
 .content{
@@ -57,13 +139,14 @@ body {
     justify-content: center;
     align-items: center;
     width: 100%;
-    text-align: center; /* Menambahkan text centering */
+    text-align: center;
+    box-sizing: border-box;
 }
 
 .header0{
-    font-size: clamp(24px, 5vw, 38px); /* Responsive font size */
+    font-size: clamp(22px, 5vw, 38px);
     list-style: none; 
-    padding: 20px 10px 15px 10px;
+    padding: 15px 5px 10px 5px;
     font-family: "League Spartan", sans-serif;
     font-optical-sizing: auto;
     font-weight: bold;
@@ -75,9 +158,9 @@ body {
 }
 
 .header{
-    font-size: clamp(24px, 5vw, 38px);
+    font-size: clamp(22px, 5vw, 38px);
     list-style: none; 
-    padding: 15px 10px;
+    padding: 10px 5px;
     font-family: "League Spartan", sans-serif;
     font-optical-sizing: auto;
     font-weight: bold;
@@ -86,9 +169,9 @@ body {
 }
 
 .header1{
-    font-size: clamp(24px, 5vw, 38px);
+    font-size: clamp(22px, 5vw, 38px);
     list-style: none; 
-    padding: 15px 10px;
+    padding: 10px 5px;
     font-family: "League Spartan", sans-serif;
     font-optical-sizing: auto;
     font-weight: bold;
@@ -97,168 +180,163 @@ body {
 }
 
 .isi0{
-    font-size: clamp(14px, 3vw, 18px);
+    font-size: clamp(13px, 3vw, 18px);
     list-style: none;
     text-align: center;
-    padding: 10px 15px;
-    line-height: 1.5;
+    padding: 5px 10px;
+    line-height: 1.4;
 }
 
 .isi{
-    font-size: clamp(14px, 3vw, 18px);
+    font-size: clamp(13px, 3vw, 18px);
     list-style: none;
-    line-height: 1.5;
-    padding: 10px;
-    text-align: center; /* Menambahkan center alignment */
+    line-height: 1.4;
+    padding: 5px 10px;
+    text-align: center;
 }
 
 .isi1{
-    font-size: clamp(14px, 3vw, 18px);
+    font-size: clamp(13px, 3vw, 18px);
     list-style: none;
-    padding: 10px 15px;
-    line-height: 1.5;
+    padding: 5px 10px;
+    line-height: 1.4;
     text-align: left;
     display: flex;
     flex-direction: column;
-    align-items: center; /* Menambahkan centering untuk CTA */
+    align-items: center;
 }
 
 .isi2{
-    font-size: clamp(14px, 3vw, 18px);
+    font-size: clamp(13px, 3vw, 18px);
     list-style: none;
-    padding: 10px 15px;
-    line-height: 1.5;
+    padding: 5px 10px;
+    line-height: 1.4;
     text-align: left;
     display: flex;
     flex-direction: column;
-    align-items: center; /* Menambahkan centering untuk CTA */
+    align-items: center;
 }
 
-/* Container untuk teks yang membutuhkan text alignment */
 .text-content {
     text-align: left;
     margin-bottom: 15px;
+    width: 100%;
 }
 
 /* Responsive images */
 .pertama, .kedua, .ketiga{
     width: 100%;
-    max-width: 250px;
+    max-width: 200px;
     height: auto;
-    aspect-ratio: 3/4; /* Mempertahankan proporsi */
+    aspect-ratio: 3/4;
     object-fit: cover;
     border-radius: 15px;
-    margin: 15px 0;
-    align-self: center; /* Memastikan gambar berada di tengah */
+    margin: 10px 0;
+    align-self: center;
 }
 
 .keempat{
     width: 100%;
-    max-width: 120px;
+    max-width: 100px;
     height: auto;
     aspect-ratio: 9/16;
     object-fit: cover;
     border-radius: 8px;
-    margin: 15px 0;
-    align-self: center; /* Memastikan gambar berada di tengah */
+    margin: 10px 0;
+    align-self: center;
 }
 
-/* Link styling - Konsisten untuk semua CTA */
+/* Link styling */
 .link, a {
     color: #333;
     text-decoration: none;
     font-weight: bold;
-    padding: 12px 24px;
+    padding: 10px 20px;
     background-color: rgba(255,255,255,0.8);
-    border-radius: 25px;
+    border-radius: 20px;
     transition: all 0.3s ease;
     display: inline-block;
-    margin: 20px auto;
+    margin: 15px auto;
     text-align: center;
     align-self: center;
     border: 2px solid transparent;
-    font-size: clamp(14px, 2.5vw, 16px);
-    min-width: 150px;
+    font-size: clamp(13px, 2.5vw, 16px);
+    min-width: 130px;
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
 
 .link:hover, a:hover {
     background-color: rgba(255,255,255,1);
-    transform: translateY(-3px);
-    box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.2);
     border-color: #f8db8a;
 }
 
-/* Styling khusus untuk link di page 4 (final page) */
 .final-link {
     background: linear-gradient(45deg, #ff9a9e, #fecfef);
     color: white;
-    font-size: clamp(16px, 3vw, 18px);
-    padding: 15px 30px;
-    border-radius: 30px;
+    font-size: clamp(14px, 3vw, 18px);
+    padding: 12px 25px;
+    border-radius: 25px;
     text-shadow: 0 1px 2px rgba(0,0,0,0.3);
     box-shadow: 0 6px 20px rgba(255, 154, 158, 0.4);
 }
 
 .final-link:hover {
     background: linear-gradient(45deg, #ff8a95, #fed6e3);
-    transform: translateY(-4px);
+    transform: translateY(-3px);
     box-shadow: 0 8px 25px rgba(255, 154, 158, 0.6);
 }
 
-/* Mobile-first: Foto selalu di atas pada mobile */
+/* Mobile-first layout */
 .card {
     flex-direction: column;
 }
 
-/* Khusus untuk page 1 dengan .content wrapper */
 .content {
     flex-direction: column;
 }
 
-/* Urutan khusus untuk mobile - foto selalu di atas */
 .card .pertama,
 .card .kedua, 
 .card .ketiga,
 .card .keempat {
-    order: -1; /* Memastikan foto selalu di atas pada mobile */
+    order: -1;
 }
-
-/* Media Queries untuk berbagai ukuran layar */
 
 /* Tablet dan layar kecil (768px ke atas) */
 @media screen and (min-width: 768px) {
     .kosongan {
-        height: 10vh;
+        height: 8vh;
     }
     
     .card {
         width: 85%;
-        padding: 30px;
+        padding: 25px;
         flex-direction: row;
         align-items: center;
-        gap: 30px;
+        gap: 25px;
     }
     
     .card-last {
+        width: 85%;
         flex-direction: row;
-        gap: 30px;
-        padding: 30px;
+        gap: 25px;
+        padding: 25px;
         align-items: center;
     }
     
     .content {
         flex-direction: row;
-        gap: 30px;
+        gap: 25px;
         align-items: center;
     }
     
-    /* Reset order untuk desktop */
     .card .pertama,
     .card .kedua, 
     .card .ketiga,
     .card .keempat {
-        order: 0; /* Reset order untuk desktop layout */
+        order: 0;
     }
     
     .pertama, .kedua, .ketiga {
@@ -273,45 +351,49 @@ body {
     
     .isi1, .isi2 {
         flex: 1;
-        padding: 0 20px;
+        padding: 0 15px;
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
     }
     
-    /* Untuk page2.html - gambar di kanan pada desktop */
     .card:has(.kedua) {
         flex-direction: row-reverse;
     }
     
-    /* Untuk page3.html - gambar di kiri pada desktop */
     .card:has(.ketiga) {
         flex-direction: row;
     }
     
-    /* Untuk page4.html - gambar di kanan pada desktop */
     .card:has(.keempat) {
         flex-direction: row-reverse;
+    }
+    
+    /* Audio button untuk tablet */
+    .audio-control {
+        width: 50px;
+        height: 50px;
+        font-size: 20px;
     }
 }
 
 /* Desktop (1024px ke atas) */
 @media screen and (min-width: 1024px) {
     .kosongan {
-        height: 13vh;
+        height: 10vh;
     }
     
     .card {
         width: 80%;
         max-width: 900px;
-        padding: 40px;
+        padding: 35px;
     }
     
     .card-last {
         width: 80%;
         max-width: 900px;
-        padding: 40px;
+        padding: 35px;
     }
     
     .pertama, .kedua, .ketiga {
@@ -321,13 +403,22 @@ body {
     .keempat {
         max-width: 120px;
     }
+    
+    /* Audio button untuk desktop */
+    .audio-control {
+        top: 20px;
+        right: 20px;
+        width: 55px;
+        height: 55px;
+        font-size: 22px;
+    }
 }
 
 /* Large desktop (1440px ke atas) */
 @media screen and (min-width: 1440px) {
     .card, .card-last {
         max-width: 1000px;
-        padding: 50px;
+        padding: 45px;
     }
 }
 
@@ -336,74 +427,128 @@ body {
 .card::after {
     content: '';
     position: absolute;
-    width: 80px;
-    height: 80px;
+    width: 60px;
+    height: 60px;
     border-radius: 50%;
     z-index: 10;
 }
 
-/* Top left flower - closer to card */
 .card::before {
-    top: -15px;
-    left: -15px;
+    top: -10px;
+    left: -10px;
     background: radial-gradient(circle, #ff6b9d 20%, #ffd93d 40%, #6bcf7f 70%);
     box-shadow: 
-        12px 12px 0 -8px #ff8fab,
-        -12px 12px 0 -8px #ff8fab,
-        12px -12px 0 -8px #ff8fab,
-        -12px -12px 0 -8px #ff8fab,
-        0 0 15px rgba(255, 107, 157, 0.3);
+        10px 10px 0 -6px #ff8fab,
+        -10px 10px 0 -6px #ff8fab,
+        10px -10px 0 -6px #ff8fab,
+        -10px -10px 0 -6px #ff8fab,
+        0 0 10px rgba(255, 107, 157, 0.3);
     animation: float1 4s ease-in-out infinite;
 }
 
-/* Bottom right flower - closer to card */
 .card::after {
-    bottom: -15px;
-    right: -35px;
+    bottom: -10px;
+    right: -20px;
     background: radial-gradient(circle, #a8e6cf 20%, #ffd3a5 40%, #fd9853 70%);
     box-shadow: 
-        12px 12px 0 -8px #b8f0d6,
-        -12px 12px 0 -8px #b8f0d6,
-        12px -12px 0 -8px #b8f0d6,
-        -12px -12px 0 -8px #b8f0d6,
-        0 0 15px rgba(168, 230, 207, 0.3);
+        10px 10px 0 -6px #b8f0d6,
+        -10px 10px 0 -6px #b8f0d6,
+        10px -10px 0 -6px #b8f0d6,
+        -10px -10px 0 -6px #b8f0d6,
+        0 0 10px rgba(168, 230, 207, 0.3);
     animation: float2 5s ease-in-out infinite;
 }
-/* Small flowers */
+
 .flower-small {
     position: absolute;
-    width: 30px;
-    height: 30px;
+    width: 25px;
+    height: 25px;
     border-radius: 50%;
     z-index: 5;
 }
 
 .flower-top-right {
-    top: -10px;
-    right: 40px;
+    top: -8px;
+    right: 25px;
     background: radial-gradient(circle, #ff9a9e 30%, #fecfef 70%);
     box-shadow: 
-        8px 8px 0 -6px #ffadb0,
-        -8px 8px 0 -6px #ffadb0,
-        8px -8px 0 -6px #ffadb0,
-        -8px -8px 0 -6px #ffadb0;
+        6px 6px 0 -4px #ffadb0,
+        -6px 6px 0 -4px #ffadb0,
+        6px -6px 0 -4px #ffadb0,
+        -6px -6px 0 -4px #ffadb0;
     animation: float3 2.5s ease-in-out infinite;
 }
 
 .flower-bottom-left {
-    bottom: -10px;
-    left: 10px;
+    bottom: -8px;
+    left: 8px;
     background: radial-gradient(circle, #a8edea 30%, #fed6e3 70%);
     box-shadow: 
-        8px 8px 0 -6px #b8f5f0,
-        -8px 8px 0 -6px #b8f5f0,
-        8px -8px 0 -6px #b8f5f0,
-        -8px -8px 0 -6px #b8f5f0;
+        6px 6px 0 -4px #b8f5f0,
+        -6px 6px 0 -4px #b8f5f0,
+        6px -6px 0 -4px #b8f5f0,
+        -6px -6px 0 -4px #b8f5f0;
     animation: float4 3.5s ease-in-out infinite;
 }
 
+/* Desktop flower sizes */
+@media screen and (min-width: 768px) {
+    .card::before,
+    .card::after {
+        width: 80px;
+        height: 80px;
+    }
+    
+    .card::before {
+        top: -15px;
+        left: -15px;
+        box-shadow: 
+            12px 12px 0 -8px #ff8fab,
+            -12px 12px 0 -8px #ff8fab,
+            12px -12px 0 -8px #ff8fab,
+            -12px -12px 0 -8px #ff8fab,
+            0 0 15px rgba(255, 107, 157, 0.3);
+    }
+    
+    .card::after {
+        bottom: -15px;
+        right: -30px;
+        box-shadow: 
+            12px 12px 0 -8px #b8f0d6,
+            -12px 12px 0 -8px #b8f0d6,
+            12px -12px 0 -8px #b8f0d6,
+            -12px -12px 0 -8px #b8f0d6,
+            0 0 15px rgba(168, 230, 207, 0.3);
+    }
+    
+    .flower-small {
+        width: 30px;
+        height: 30px;
+    }
+    
+    .flower-top-right {
+        top: -10px;
+        right: 35px;
+        box-shadow: 
+            8px 8px 0 -6px #ffadb0,
+            -8px 8px 0 -6px #ffadb0,
+            8px -8px 0 -6px #ffadb0,
+            -8px -8px 0 -6px #ffadb0;
+    }
+    
+    .flower-bottom-left {
+        bottom: -10px;
+        left: 10px;
+        box-shadow: 
+            8px 8px 0 -6px #b8f5f0,
+            -6px 8px 0 -6px #b8f5f0,
+            8px -8px 0 -6px #b8f5f0,
+            -8px -8px 0 -6px #b8f5f0;
+    }
+}
+
 /* Animations */
-@keyframes float1 { 0%, 100% { transform: translateY(0px) rotate(0deg); } 50% { transform: translateY(-10px) rotate(5deg); } }
-@keyframes float2 { 0%, 100% { transform: translateY(0px) rotate(0deg); } 50% { transform: translateY(-8px) rotate(-3deg); } }
-@keyframes float3 { 0%, 100% { transform: translateY(0px) rotate(0deg); } 50% { transform: translateY(-6px) rotate(8deg); } }
-@keyframes float4 { 0%, 100% { transform: translateY(0px) rotate(0deg); } 50% { transform: translateY(-12px) rotate(-12px) rotate(-6deg); } }
+@keyframes float1 { 0%, 100% { transform: translateY(0px) rotate(0deg); } 50% { transform: translateY(-8px) rotate(4deg); } }
+@keyframes float2 { 0%, 100% { transform: translateY(0px) rotate(0deg); } 50% { transform: translateY(-6px) rotate(-2deg); } }
+@keyframes float3 { 0%, 100% { transform: translateY(0px) rotate(0deg); } 50% { transform: translateY(-4px) rotate(6deg); } }
+@keyframes float4 { 0%, 100% { transform: translateY(0px) rotate(0deg); } 50% { transform: translateY(-8px) rotate(-4deg); } }

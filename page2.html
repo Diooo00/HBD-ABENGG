@@ -8,56 +8,16 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@100..900&display=swap" rel="stylesheet">
-    <style>
-        /* Audio control button styling - Same as page 1 */
-        .audio-control {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            background: rgba(248, 219, 138, 0.9);
-            border: none;
-            border-radius: 50px;
-            padding: 10px 15px;
-            cursor: pointer;
-            font-size: 14px;
-            font-weight: bold;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-            transition: all 0.3s ease;
-            z-index: 1000;
-        }
-        
-        .audio-control:hover {
-            background: rgba(248, 219, 138, 1);
-            transform: translateY(-2px);
-        }
-        
-        .audio-indicator {
-            position: fixed;
-            top: 70px;
-            right: 20px;
-            background: rgba(0,0,0,0.7);
-            color: white;
-            padding: 8px 12px;
-            border-radius: 20px;
-            font-size: 12px;
-            z-index: 1000;
-            display: none;
-        }
-        
-        .hidden {
-            display: none !important;
-        }
-    </style>
 </head>
 <body>
-    <!-- PERHATIAN: File audio berbeda untuk page2! -->
+    <!-- Audio element -->
     <audio id="backgroundAudio" preload="auto" loop>
         <source src="hbddddddd.mp3" type="audio/mpeg">
     </audio>
     
-    <!-- Audio control button - Same as page 1 -->
-    <button class="audio-control" id="audioToggle">🔇 Play Music</button>
-    <div class="audio-indicator hidden" id="audioIndicator">Music: Off</div>
+    <!-- Audio control button - Icon only -->
+    <button class="audio-control" id="audioToggle">🔇</button>
+    <div class="audio-indicator" id="audioIndicator">Music: Off</div>
 
     <div>
         <li class="kosongan"></li>    
@@ -100,9 +60,8 @@
         <li class="kosongan"></li>    
     </div>
 
-    <!-- JAVASCRIPT YANG SAMA SEPERTI PAGE 1 -->
     <script>
-        // Audio management - Same as page 1
+        // Audio management - Fixed version
         const audio = document.getElementById('backgroundAudio');
         const audioToggle = document.getElementById('audioToggle');
         const audioIndicator = document.getElementById('audioIndicator');
@@ -114,11 +73,11 @@
         function playAudio() {
             audio.play().then(() => {
                 isPlaying = true;
-                audioToggle.innerHTML = '🔊 Pause Music';
+                audioToggle.innerHTML = '🔊';
                 showIndicator('Music: Playing');
             }).catch(error => {
                 console.log('Audio play failed:', error);
-                audioToggle.innerHTML = '🔇 Play Music';
+                audioToggle.innerHTML = '🔇';
                 showIndicator('Click to enable audio');
             });
         }
@@ -127,16 +86,16 @@
         function pauseAudio() {
             audio.pause();
             isPlaying = false;
-            audioToggle.innerHTML = '🔇 Play Music';
+            audioToggle.innerHTML = '🔇';
             showIndicator('Music: Paused');
         }
         
         // Show indicator with auto hide
         function showIndicator(message) {
             audioIndicator.innerHTML = message;
-            audioIndicator.classList.remove('hidden');
+            audioIndicator.style.display = 'block';
             setTimeout(() => {
-                audioIndicator.classList.add('hidden');
+                audioIndicator.style.display = 'none';
             }, 2000);
         }
         
@@ -178,17 +137,17 @@
         // Handle audio events
         audio.addEventListener('play', function() {
             isPlaying = true;
-            audioToggle.innerHTML = '🔊 Pause Music';
+            audioToggle.innerHTML = '🔊';
         });
         
         audio.addEventListener('pause', function() {
             isPlaying = false;
-            audioToggle.innerHTML = '🔇 Play Music';
+            audioToggle.innerHTML = '🔇';
         });
         
         audio.addEventListener('ended', function() {
             isPlaying = false;
-            audioToggle.innerHTML = '🔇 Play Music';
+            audioToggle.innerHTML = '🔇';
         });
         
         // Try to autoplay on page load (will likely be blocked by browser)
@@ -196,7 +155,7 @@
             audio.play().then(() => {
                 hasInteracted = true;
                 isPlaying = true;
-                audioToggle.innerHTML = '🔊 Pause Music';
+                audioToggle.innerHTML = '🔊';
             }).catch(() => {
                 // Autoplay blocked, wait for user interaction
                 showIndicator('Click anywhere to start music');
