@@ -109,6 +109,7 @@ body {
     list-style: none;
     line-height: 1.5;
     padding: 10px;
+    text-align: center; /* Menambahkan center alignment */
 }
 
 .isi1{
@@ -131,6 +132,12 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center; /* Menambahkan centering untuk CTA */
+}
+
+/* Container untuk teks yang membutuhkan text alignment */
+.text-content {
+    text-align: left;
+    margin-bottom: 15px;
 }
 
 /* Responsive images */
@@ -156,24 +163,65 @@ body {
     align-self: center; /* Memastikan gambar berada di tengah */
 }
 
-/* Link styling */
+/* Link styling - Konsisten untuk semua CTA */
 .link, a {
     color: #333;
     text-decoration: none;
     font-weight: bold;
-    padding: 10px 20px;
-    background-color: rgba(255,255,255,0.7);
-    border-radius: 20px;
+    padding: 12px 24px;
+    background-color: rgba(255,255,255,0.8);
+    border-radius: 25px;
     transition: all 0.3s ease;
     display: inline-block;
-    margin: 15px auto; /* Mengubah margin untuk centering */
+    margin: 20px auto;
     text-align: center;
-    align-self: center; /* Memastikan CTA berada di tengah */
+    align-self: center;
+    border: 2px solid transparent;
+    font-size: clamp(14px, 2.5vw, 16px);
+    min-width: 150px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
 
 .link:hover, a:hover {
-    background-color: rgba(255,255,255,0.9);
-    transform: translateY(-2px);
+    background-color: rgba(255,255,255,1);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+    border-color: #f8db8a;
+}
+
+/* Styling khusus untuk link di page 4 (final page) */
+.final-link {
+    background: linear-gradient(45deg, #ff9a9e, #fecfef);
+    color: white;
+    font-size: clamp(16px, 3vw, 18px);
+    padding: 15px 30px;
+    border-radius: 30px;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+    box-shadow: 0 6px 20px rgba(255, 154, 158, 0.4);
+}
+
+.final-link:hover {
+    background: linear-gradient(45deg, #ff8a95, #fed6e3);
+    transform: translateY(-4px);
+    box-shadow: 0 8px 25px rgba(255, 154, 158, 0.6);
+}
+
+/* Mobile-first: Foto selalu di atas pada mobile */
+.card {
+    flex-direction: column;
+}
+
+/* Khusus untuk page 1 dengan .content wrapper */
+.content {
+    flex-direction: column;
+}
+
+/* Urutan khusus untuk mobile - foto selalu di atas */
+.card .pertama,
+.card .kedua, 
+.card .ketiga,
+.card .keempat {
+    order: -1; /* Memastikan foto selalu di atas pada mobile */
 }
 
 /* Media Queries untuk berbagai ukuran layar */
@@ -188,7 +236,7 @@ body {
         width: 85%;
         padding: 30px;
         flex-direction: row;
-        align-items: center; /* Mengubah dari flex-start ke center */
+        align-items: center;
         gap: 30px;
     }
     
@@ -196,13 +244,21 @@ body {
         flex-direction: row;
         gap: 30px;
         padding: 30px;
-        align-items: center; /* Memastikan alignment di tengah */
+        align-items: center;
     }
     
     .content {
         flex-direction: row;
         gap: 30px;
-        align-items: center; /* Mengubah dari flex-start ke center */
+        align-items: center;
+    }
+    
+    /* Reset order untuk desktop */
+    .card .pertama,
+    .card .kedua, 
+    .card .ketiga,
+    .card .keempat {
+        order: 0; /* Reset order untuk desktop layout */
     }
     
     .pertama, .kedua, .ketiga {
@@ -220,12 +276,22 @@ body {
         padding: 0 20px;
         display: flex;
         flex-direction: column;
-        justify-content: center; /* Menambahkan vertical centering untuk teks */
-        align-items: center; /* Memastikan CTA tetap di tengah di desktop */
+        justify-content: center;
+        align-items: center;
     }
     
-    /* Untuk page2.html - gambar di kanan */
+    /* Untuk page2.html - gambar di kanan pada desktop */
     .card:has(.kedua) {
+        flex-direction: row-reverse;
+    }
+    
+    /* Untuk page3.html - gambar di kiri pada desktop */
+    .card:has(.ketiga) {
+        flex-direction: row;
+    }
+    
+    /* Untuk page4.html - gambar di kanan pada desktop */
+    .card:has(.keempat) {
         flex-direction: row-reverse;
     }
 }
@@ -340,4 +406,4 @@ body {
 @keyframes float1 { 0%, 100% { transform: translateY(0px) rotate(0deg); } 50% { transform: translateY(-10px) rotate(5deg); } }
 @keyframes float2 { 0%, 100% { transform: translateY(0px) rotate(0deg); } 50% { transform: translateY(-8px) rotate(-3deg); } }
 @keyframes float3 { 0%, 100% { transform: translateY(0px) rotate(0deg); } 50% { transform: translateY(-6px) rotate(8deg); } }
-@keyframes float4 { 0%, 100% { transform: translateY(0px) rotate(0deg); } 50% { transform: translateY(-12px) rotate(-6deg); } }
+@keyframes float4 { 0%, 100% { transform: translateY(0px) rotate(0deg); } 50% { transform: translateY(-12px) rotate(-12px) rotate(-6deg); } }
